@@ -41,14 +41,17 @@ def adjust_sharpness(img):
 
 def add_noise(img, mean, std):
     """
-    Function to adjust the sharpness of the given image.
+    Function to insert noise in the given image. The noise insertion is carried
+    out with random generation based on Gaussian distribution.
 
     Parameters
     ----------
     img : ndarray
         Input image data.
     mean : float
-        AA.
+        Mean of random distribution.
+    std : float
+        Standart deviation of random distribution.
 
     Returns
     -------
