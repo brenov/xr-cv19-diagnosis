@@ -55,8 +55,14 @@ def add_noise(img, mean, std):
     out : ndarray
         Noisy version of the input image data.
     """
-    # TODO
-    pass
+    # Generate random noise
+    noise = np.random.normal(mean, std, img.shape)
+    # Insert noise in the given image
+    out = img + noise
+    # Clip back to the original range
+    out = np.clip(out, img.min(), img.max())
+    # Return the noisy image
+    return out.astype(np.uint8)
 
 
 def clockwise_rotation(img):
