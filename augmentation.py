@@ -68,37 +68,21 @@ def add_noise(img, mean, std):
     return out.astype(np.uint8)
 
 
-def clockwise_rotation(img):
+def rotate(img, angle):
     """
-    Function to rotate the given image 45 degrees clockwise.
+    Function to rotate the given image.
 
     Parameters
     ----------
     img : ndarray
         Input image data.
+    angle : float
+        Rotation angle.
 
     Returns
     -------
     out : ndarray
-        45 degrees rotated version of the input image data.
-    """
-    # TODO
-    pass
-
-
-def anticlockwise_rotation(img):
-    """
-    Function to rotate the given image 45 degrees anticlockwise.
-
-    Parameters
-    ----------
-    img : ndarray
-        Input image data.
-
-    Returns
-    -------
-    out : ndarray
-        -45 degrees rotated version of the input image data.
+        Rotated version of the input image data.
     """
     # TODO
     pass
