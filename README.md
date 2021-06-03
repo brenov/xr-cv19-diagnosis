@@ -13,3 +13,33 @@ After data this stage, we will perform the fine-tuning of the neural network aim
 ## Dataset
 
 COVID-19 Chest X-ray Database (https://www.kaggle.com/tawsifurrahman/covid19-radiography-database).
+
+### Example of input images
+
+<table >
+  <tr>
+    <td>
+      <img src=".github/Normal.png" alt="1" width=200px height=200px>
+    </td>
+    <td>
+      <img src=".github/Lung_Opacity.png" alt="2" width=200px height=200px>
+    </td>
+    <td>
+      <img src=".github/Viral_Pneumonia.png" alt="3" width=200px height=200px>
+    </td>
+    <td>
+      <img src=".github/COVID.png" alt="4" width=200px height=200px>
+    </td>
+   </tr>
+   <tr>
+      <td>Normal</td>
+      <td>Lung Opacity</td>
+      <td>Viral Pneumonia</td>
+      <td>COVID</td>
+  </tr>
+</table>
+
+## Authors
+
+- Breno Maurício de Freitas Viana
+- Felipe Antunes Quirino
