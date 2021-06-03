@@ -1,15 +1,18 @@
 #!/usr/bin/python3
 
 import common
-import imageio
 import augmentation as aug
+from pathlib import Path
+import imageio
 
 
-# Dataset root
+# Dataset paths
 DATASET_PATH = 'Dataset'
+TRAIN_PATH = 'Train'
+TEST_PATH = 'Test'
 
 # Target directory
-AUGMENTED_PATH = DATASET_PATH + '/Augmented'
+AUGMENTED_PATH = 'Augmented'
 
 # PNG extension
 PNG = '.png'
@@ -19,13 +22,15 @@ def load():
     """
     Load and return the paths of each image in the Dataset.
     """
-    # TODO
-    return ['Dataset/COVID/COVID-1.png']
+    images = []
+    for p in Path(DATASET_PATH).rglob('*' + PNG):
+        images.append(str(p))
+    return images
 
 
 def augmentate(filenames):
     """
-    Perform data augmentation on images.
+    Perform data augmentation of images.
 
     Parameters
     ----------
@@ -46,36 +51,47 @@ def augmentate(filenames):
         # Get image class
         cls = common.get_class(filename)
 
+        # Get the image purpose
+        purpose = TRAIN_PATH if TRAIN_PATH in filename else TEST_PATH
+
         # Remove path prefix and PNG extension
         filename = filename.replace(PNG, '') \
             .replace(DATASET_PATH + '/', '') \
+            .replace(purpose + '/', '') \
             .replace(cls + '/', '')
 
-        # Build the new path prefix
-        prefix = AUGMENTED_PATH + '/' + cls + '/'
-
+        # Build the path prefix of the purpose (train or test)
+        prefix = AUGMENTED_PATH + '/' + purpose + '/'
         # Create a folder correponding to the image class
         common.create_folder(prefix)
 
+        # Build the path prefix of the image class
+        prefix = AUGMENTED_PATH + '/' + purpose + '/' + cls + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefix)
+
+        # Update filename
+        filename = prefix + filename
+
         # Adjust contrast - WARNING: the function `adjust_contrast` was not implemented yet
         img1 = aug.adjust_contrast(img)
-        imageio.imsave(prefix + filename + '_contrast' + PNG, img1)
+        imageio.imsave(filename + '_contrast' + PNG, img1)
 
         # Adjust sharpness - WARNING: the function `adjust_sharpness` was not implemented yet
         img2 = aug.adjust_sharpness(img)
-        imageio.imsave(prefix + filename + '_sharpness' + PNG, img2)
+        imageio.imsave(filename + '_sharpness' + PNG, img2)
 
         # Insert noise
         img3 = aug.add_noise(img, 10, 10)
-        imageio.imsave(prefix + filename + '_noisy' + PNG, img3)
+        imageio.imsave(filename + '_noisy' + PNG, img3)
 
         # Rotate 25 degrees
         img4 = aug.rotate(img, 25)
-        imageio.imsave(prefix + filename + '_25rotated' + PNG, img4)
+        imageio.imsave(filename + '_25rotated' + PNG, img4)
 
         # Rotate -25 degrees
         img5 = aug.rotate(img, -25)
-        imageio.imsave(prefix + filename + '_-25rotated' + PNG, img5)
+        imageio.imsave(filename + '_-25rotated' + PNG, img5)
 
 
 def main():
