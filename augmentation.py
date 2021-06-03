@@ -3,9 +3,6 @@
 import numpy as np
 
 
-BITS_8 = 255
-
-
 def adjust_contrast(img):
     """
     Function to adjust the contrast of the input image.
@@ -89,6 +86,31 @@ def rotate(img, angle):
     out : ndarray
         Rotated version of the input image data.
     """
-    # TODO
-    print('WARNING: the function `adjust_sharpness` was not implemented yet')
-    return img
+    # Initialize the output image
+    out = np.zeros(img.shape)
+
+    # Calculate the rotation matrix
+    theta = np.radians(angle)
+    c, s = np.cos(theta), np.sin(theta)
+    R = np.array([[c, s], [-s, c]])
+
+    # Calculate image center
+    center = ((img.shape[0]) // 2, (img.shape[1]) // 2)
+
+    # Build matrix of points
+    for x in range(img.shape[0]): # Row
+        for y in range(img.shape[1]): # Col
+            # Calculate the new position
+            (nx, ny) = np.dot(R, np.array([x - center[1], y - center[0]]))
+            # Add offset
+            nx += center[0]
+            ny += center[1]
+            # Convert back to integer
+            (nx, ny) = (int(nx), int(ny))
+            # Ignore points out of bounds
+            if nx > 0 and ny > 0 and nx < img.shape[0] and ny < img.shape[1]:
+                # Set the pixel to its new position
+                out[x, y] = img[nx, ny]
+
+    # Return the rotated image
+    return out.astype(np.uint8)

@@ -85,13 +85,13 @@ def augmentate(filenames):
         img3 = aug.add_noise(img, 10, 10)
         imageio.imsave(filename + '_noisy' + PNG, img3)
 
-        # Rotate 25 degrees
-        img4 = aug.rotate(img, 25)
-        imageio.imsave(filename + '_25rotated' + PNG, img4)
+        # Rotate 15 degrees
+        img4 = aug.rotate(img, 15)
+        imageio.imsave(filename + '_15rotated' + PNG, img4)
 
-        # Rotate -25 degrees
-        img5 = aug.rotate(img, -25)
-        imageio.imsave(filename + '_-25rotated' + PNG, img5)
+        # Rotate -15 degrees
+        img5 = aug.rotate(img, -15)
+        imageio.imsave(filename + '_-15rotated' + PNG, img5)
 
 
 def main():
