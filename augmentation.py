@@ -105,10 +105,10 @@ def rotate(img, angle):
             # Add offset
             nx += center[0]
             ny += center[1]
-            # Convert back to integer
+            # Convert the new position to integer
             (nx, ny) = (int(nx), int(ny))
             # Ignore points out of bounds
-            if nx > 0 and ny > 0 and nx < img.shape[0] and ny < img.shape[1]:
+            if nx >= 0 and ny >= 0 and nx < img.shape[0] and ny < img.shape[1]:
                 # Set the pixel to its new position
                 out[x, y] = img[nx, ny]
 
