@@ -5,7 +5,7 @@ import numpy as np
 
 def adjust_contrast(img):
     """
-    Function to adjust the contrast of the given image.
+    Function to adjust the contrast of the input image.
 
     Parameters
     ----------
@@ -23,7 +23,7 @@ def adjust_contrast(img):
 
 def adjust_sharpness(img):
     """
-    Function to adjust the sharpness of the given image.
+    Function to adjust the sharpness of the input image.
 
     Parameters
     ----------
@@ -41,7 +41,7 @@ def adjust_sharpness(img):
 
 def add_noise(img, mean, std):
     """
-    Function to insert noise in the given image. The noise insertion is carried
+    Function to insert noise in the input image. The noise insertion is carried
     out with random generation based on Gaussian distribution.
 
     Parameters
@@ -58,9 +58,9 @@ def add_noise(img, mean, std):
     out : ndarray
         Noisy version of the input image data.
     """
-    # Generate random noise
+    # Generate a random noisy image
     noise = np.random.normal(mean, std, img.shape)
-    # Insert noise in the given image
+    # Insert the noise in the input image
     out = img + noise
     # Clip back to the original range
     out = np.clip(out, img.min(), img.max())
@@ -70,7 +70,7 @@ def add_noise(img, mean, std):
 
 def rotate(img, angle):
     """
-    Function to rotate the given image.
+    Function to rotate the input image.
 
     Parameters
     ----------
