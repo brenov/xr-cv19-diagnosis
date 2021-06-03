@@ -3,6 +3,9 @@
 import numpy as np
 
 
+BITS_8 = 255
+
+
 def adjust_contrast(img):
     """
     Function to adjust the contrast of the input image.
@@ -18,7 +21,8 @@ def adjust_contrast(img):
         Contrast adjusted version of the input image data.
     """
     # TODO
-    pass
+    print('WARNING: the function `adjust_contrast` was not implemented yet')
+    return img
 
 
 def adjust_sharpness(img):
@@ -36,7 +40,8 @@ def adjust_sharpness(img):
         Sharpness adjusted version of the input image data.
     """
     # TODO
-    pass
+    print('WARNING: the function `adjust_sharpness` was not implemented yet')
+    return img
 
 
 def add_noise(img, mean, std):
@@ -85,4 +90,5 @@ def rotate(img, angle):
         Rotated version of the input image data.
     """
     # TODO
-    pass
+    print('WARNING: the function `adjust_sharpness` was not implemented yet')
+    return img
