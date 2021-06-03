@@ -66,7 +66,7 @@ def augmentate(filenames):
         common.create_folder(prefix)
 
         # Build the path prefix of the image class
-        prefix = AUGMENTED_PATH + '/' + purpose + '/' + cls + '/'
+        prefix = prefix + cls + '/'
         # Create a folder correponding to the image class
         common.create_folder(prefix)
 
