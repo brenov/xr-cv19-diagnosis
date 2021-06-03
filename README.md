@@ -12,7 +12,7 @@ After data this stage, we will perform the fine-tuning of the neural network aim
 
 ## Dataset
 
-COVID-19 Chest X-ray Database (https://www.kaggle.com/tawsifurrahman/covid19-radiography-database).
+COVID-19 Chest X-ray Database (https://www.kaggle.com/tawsifurrahman/covid19-radiography-database). The dataset present in this repository is just a small subset of the COVID-19 Chest X-ray Database.
 
 ### Example of input images
 
