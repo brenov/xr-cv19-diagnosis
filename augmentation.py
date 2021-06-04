@@ -97,7 +97,7 @@ def rotate(img, angle):
     # Calculate image center
     center = ((img.shape[0]) // 2, (img.shape[1]) // 2)
 
-    # Build matrix of points
+    # Perform image rotation
     for x in range(img.shape[0]): # Row
         for y in range(img.shape[1]): # Col
             # Calculate the new position
