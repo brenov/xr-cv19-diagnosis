@@ -3,7 +3,7 @@
 import numpy as np
 
 
-def adjust_contrast(img):
+def adjust_contrast(img,factor):
     """
     Function to adjust the contrast of the input image.
 
@@ -12,17 +12,25 @@ def adjust_contrast(img):
     img : ndarray
         Input image data.
 
+    factor: float
+        Input contrast factor
+
     Returns
     -------
     out : ndarray
         Contrast adjusted version of the input image data.
     """
-    # TODO
-    print('WARNING: the function `adjust_contrast` was not implemented yet')
-    return img
+    factor=float(factor)
+    return np.clip(128 + factor * img - factor * 128, 0, 255).astype(np.uint8)
+
+def gaussian_filter (self,img,sigma) :
+    arx = np . arange ((-self.k // 2 ) + 1.0 , ( self.k // 2 ) + 1.0 )
+    x , y = np . meshgrid ( arx , arx )
+    filt = np.exp ( -(1/2)*( np.square(x) + np.square ( y ) ) / np.square ( sigma ) )
+    return filt/np.sum(filt)
 
 
-def adjust_sharpness(img):
+def adjust_sharpness(img,alpha,sigma1=3,sigma2=1):
     """
     Function to adjust the sharpness of the input image.
 
@@ -30,6 +38,13 @@ def adjust_sharpness(img):
     ----------
     img : ndarray
         Input image data.
+
+    alpha: float
+        image offset
+    sigma1: float
+        first standard deviation
+    sigma2: float
+        second standard deviation
 
     Returns
     -------

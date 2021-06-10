@@ -74,11 +74,11 @@ def augmentate(filenames):
         filename = prefix + filename
 
         # Adjust contrast - WARNING: the function `adjust_contrast` was not implemented yet
-        img1 = aug.adjust_contrast(img)
+        img1 = aug.adjust_contrast(img,1.4)
         imageio.imsave(filename + '_contrast' + PNG, img1)
 
         # Adjust sharpness - WARNING: the function `adjust_sharpness` was not implemented yet
-        img2 = aug.adjust_sharpness(img)
+        img2 = aug.adjust_sharpness(img,3)
         imageio.imsave(filename + '_sharpness' + PNG, img2)
 
         # Insert noise
