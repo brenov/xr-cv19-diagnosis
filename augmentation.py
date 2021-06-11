@@ -1,7 +1,7 @@
 """This file holds algorithms for data augmentation of images."""
 
 import numpy as np
-
+from scipy.fftpack import fftn, ifftn, fftshift
 
 def adjust_contrast(img,factor):
     """
@@ -23,14 +23,46 @@ def adjust_contrast(img,factor):
     factor=float(factor)
     return np.clip(128 + factor * img - factor * 128, 0, 255).astype(np.uint8)
 
-def gaussian_filter (self,img,sigma) :
-    arx = np . arange ((-self.k // 2 ) + 1.0 , ( self.k // 2 ) + 1.0 )
+
+
+def gaussian_filter (k,sigma) :
+
+    arx = np . arange ((-k // 2 ) + 1.0 , ( k // 2 ) + 1.0 )
     x , y = np . meshgrid ( arx , arx )
     filt = np.exp ( -(1/2)*( np.square(x) + np.square ( y ) ) / np.square ( sigma ) )
-    return filt/np.sum(filt)
+    
+    return filt/np.sum(filt)*255
 
 
-def adjust_sharpness(img,alpha,sigma1=3,sigma2=1):
+def apply(f,sigma,k):
+    '''blur function'''
+
+    h = gaussian_filter(k=k, sigma=sigma)
+    # computing the number of padding on one side
+    a = int(f.shape[0]//2 - h.shape[0]//2)
+    h_pad = np.pad(h, ((a,a), (a,a)), 'constant', constant_values=(0))
+
+    # computing the Fourier transforms
+    F = fftn(f)
+    H = fftn(h_pad)
+    
+
+    # convolution
+    G = np.multiply(F,H)
+
+    # Inverse Transform
+    # - we have to perform FFT shift before reconstructing the image in the space domain
+    g = fftshift(ifftn(G).real)
+    
+
+    return normalize(g)
+
+def normalize(img):
+    img-=img.min()
+    img= img/img.max()*255
+    return img
+
+def adjust_sharpness(img,amount,sigma,k):
     """
     Function to adjust the sharpness of the input image.
 
@@ -51,9 +83,11 @@ def adjust_sharpness(img,alpha,sigma1=3,sigma2=1):
     out : ndarray
         Sharpness adjusted version of the input image data.
     """
-    # TODO
-    print('WARNING: the function `adjust_sharpness` was not implemented yet')
-    return img
+    blur = normalize(apply(img, sigma,k))
+    sharpened = img + amount * (img - blur)
+    out= normalize(sharpened)
+    return out.astype(np.uint8)
+
 
 
 def add_noise(img, mean, std):
