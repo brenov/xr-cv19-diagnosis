@@ -3,7 +3,73 @@
 import numpy as np
 from scipy.fftpack import fftn, ifftn, fftshift
 
-def adjust_contrast(img,factor):
+
+def _normalize(img):
+    """
+    Function to normalize images.
+
+    Parameters
+    ----------
+    img : ndarray
+        Input image data.
+
+    Returns
+    -------
+    out : ndarray
+        Normalized image.
+    """
+    img -= img.min()
+    img = img / img.max() * 255
+    return img
+
+
+def apply_blur(f, sigma, k):
+    """
+    Function to apply blur in images.
+
+    Parameters
+    ----------
+    img : ndarray
+        Input image data.
+
+    Returns
+    -------
+    out : ndarray
+        Blurred image.
+    """
+    def gaussian_filter(k, sigma):
+        """
+        Return gaussian filter with the input `k` and `sigma`.
+        """
+        arx = np.arange ((-k // 2) + 1.0, (k // 2) + 1.0 )
+        x, y = np.meshgrid(arx, arx)
+        f = np.exp(-(1 / 2) * (np.square(x) + np.square(y)) / np.square(sigma))
+        return f / np.sum(f) * 255
+
+    # Get gaussian filter
+    h = gaussian_filter(k=k, sigma=sigma)
+
+    # Compute the number of padding on one side
+    a = int(f.shape[0] // 2 - h.shape[0] // 2)
+    h_pad = np.pad(h, ((a,a), (a,a)), 'constant', constant_values=(0))
+
+    # Compute the Fourier transforms
+    F = fftn(f)
+    H = fftn(h_pad)
+
+    # Perform convolution
+    G = np.multiply(F, H)
+
+    # Apply inverse transform
+    # - we have to perform FFT shift before reconstructing
+    #   the image in the space domain
+    g = fftshift(ifftn(G).real)
+
+    # Return the blurred image
+    return _normalize(g)
+
+
+def adjust_contrast(img, factor):
     """
     Function to adjust the contrast of the input image.
 
@@ -11,58 +77,22 @@ def adjust_contrast(img,factor):
     ----------
     img : ndarray
         Input image data.
-
     factor: float
-        Input contrast factor
+        Input contrast factor.
 
     Returns
     -------
     out : ndarray
         Contrast adjusted version of the input image data.
     """
-    factor=float(factor)
-    return np.clip(128 + factor * img - factor * 128, 0, 255).astype(np.uint8)
+    factor = float(factor)
+    array = 128 + factor * img - factor * 128
+    out = np.clip(array, 0, 255)
+    # Return the contrasted image
+    return out.astype(np.uint8)
 
 
-
-def gaussian_filter (k,sigma) :
-
-    arx = np . arange ((-k // 2 ) + 1.0 , ( k // 2 ) + 1.0 )
-    x , y = np . meshgrid ( arx , arx )
-    filt = np.exp ( -(1/2)*( np.square(x) + np.square ( y ) ) / np.square ( sigma ) )
-    
-    return filt/np.sum(filt)*255
-
-
-def apply(f,sigma,k):
-    '''blur function'''
-
-    h = gaussian_filter(k=k, sigma=sigma)
-    # computing the number of padding on one side
-    a = int(f.shape[0]//2 - h.shape[0]//2)
-    h_pad = np.pad(h, ((a,a), (a,a)), 'constant', constant_values=(0))
-
-    # computing the Fourier transforms
-    F = fftn(f)
-    H = fftn(h_pad)
-    
-
-    # convolution
-    G = np.multiply(F,H)
-
-    # Inverse Transform
-    # - we have to perform FFT shift before reconstructing the image in the space domain
-    g = fftshift(ifftn(G).real)
-    
-
-    return normalize(g)
-
-def normalize(img):
-    img-=img.min()
-    img= img/img.max()*255
-    return img
-
-def adjust_sharpness(img,amount,sigma,k):
+def adjust_sharpness(img, amount, sigma, k):
     """
     Function to adjust the sharpness of the input image.
 
@@ -70,24 +100,26 @@ def adjust_sharpness(img,amount,sigma,k):
     ----------
     img : ndarray
         Input image data.
-
     alpha: float
-        image offset
+        image offset.
     sigma1: float
-        first standard deviation
+        first standard deviation.
     sigma2: float
-        second standard deviation
+        second standard deviation.
 
     Returns
     -------
     out : ndarray
         Sharpness adjusted version of the input image data.
     """
-    blur = normalize(apply(img, sigma,k))
+    # Blurs the input image
+    blur = _normalize(apply_blur(img, sigma, k))
+    # Sharps the blurred image
     sharpened = img + amount * (img - blur)
-    out= normalize(sharpened)
+    # Normalize resulting image
+    out = _normalize(sharpened)
+    # Return the sharpened image
     return out.astype(np.uint8)
-
 
 
 def add_noise(img, mean, std):
