@@ -4,10 +4,12 @@ import os
 
 
 # Class of images
-NORMAL_CLASS = 'Normal'
 COVID_CLASS = 'COVID'
-LUNG_OPACITY_CLASS = 'Lung_Opacity'
-VIRAL_PNEUMONIA_CLASS = 'Viral_Pneumonia'
+NON_COVID_CLASS = 'NON_COVID'
+
+# Name of the folders of images
+COVID_FOLDER = '/COVID'
+NON_COVID_FOLDER = '/NON_COVID'
 
 
 def create_folder(foldername):
@@ -37,11 +39,7 @@ def get_class(filename):
     out : str
         The class of the input image.
     """
-    if NORMAL_CLASS in filename:
-        return NORMAL_CLASS
-    if COVID_CLASS in filename:
+    if COVID_FOLDER in filename:
         return COVID_CLASS
-    if LUNG_OPACITY_CLASS in filename:
-        return LUNG_OPACITY_CLASS
-    if VIRAL_PNEUMONIA_CLASS in filename:
-        return VIRAL_PNEUMONIA_CLASS
+    if NON_COVID_FOLDER in filename:
+        return NON_COVID_CLASS
