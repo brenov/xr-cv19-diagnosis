@@ -40,8 +40,13 @@ def augmentate(filenames):
     # Create folder for the augmented images
     common.create_folder(AUGMENTED_PATH)
 
+    # Control the progress
+    total = len(filenames)
+
     # For each image, generate new images
-    for i in range(len(filenames)):
+    for i in range(total):
+        print('Augmentating {} of {}'.format(i + 1, total))
+
         # Get the image filename
         filename = filenames[i]
 

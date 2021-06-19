@@ -85,6 +85,7 @@ def adjust_contrast(img, factor):
     out : ndarray
         Contrast adjusted version of the input image data.
     """
+    # Adjust contrast of the input image
     factor = float(factor)
     array = 128 + factor * img - factor * 128
     out = np.clip(array, 0, 255)
