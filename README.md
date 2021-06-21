@@ -1,14 +1,17 @@
 # Investigating the Impact of Using Image Processing Techniques in Chest X-Ray images for COVID-19 Diagnosis via Deep Learning
 
-## Abstract
+## Motivation
 
-Since World Health Organization (WHO) recognized COVID-19 as a global threat, several papers of different areas about the topic emerged.
+Since World Health Organization (WHO) recognized COVID-19 as a global threat, several works of different areas about the topic emerged.
 Regarding abnormalities detection, numerous works try to classify COVID-19 cases from Chest X-Ray images and images of other lung image acquisition methods.
 Most of these works applied Deep Learning (DL) techniques for predicting COVID-19 cases in the original images.
+
+
+## Objective
+
 This work intends to investigate the impact of using image preprocessing techniques on the chest X-ray images in their classification in COVID-19 and non-COVID-19 cases.
 We believe that such a process may improve the COVID-19 diagnosis performed by the ResNet-50.
-To do so, we will perform data augmentation by using the following image processing techniques: rotation, contrast adjustment, sharpness enhancement, and noise insertion.
-After data this stage, we will perform the fine-tuning of the neural network aiming to improve the results.
+
 
 ## Dataset
 
@@ -38,6 +41,31 @@ COVID-19 Chest X-ray Database (https://www.kaggle.com/tawsifurrahman/covid19-rad
       <td>COVID</td>
   </tr>
 </table>
+
+
+## Methodology
+
+To do so, we perform data augmentation by using the following image processing techniques: rotation, contrast adjustment, sharpness enhancement, and noise insertion.
+The generated images are used for both ResNet-50 training and test.
+<!--- After data this stage, we perform the fine-tuning of the neural network aiming to improve the results.) --->
+
+
+## Partial Results
+
+The partial results are present in the folder [Augmented](Augmented) and in [Jupyter Notebook file](resnet-50-2.ipynb).
+The folder [Augmented](Augmented) presents the augmented images generated from the [Dataset](Dataset).
+The [Jupyter Notebook file](resnet-50-2.ipynb) presents the training of a CNN with images from both [Dataset](Dataset) and [Augmented](Augmented) folders.
+
+### Augmented Images
+
+TODO
+<!--- [augmentate.py](augmentate.py) --->
+<!--- [augmentation.py](augmentation.py) --->
+
+### CNN Training
+
+TODO
+
 
 ## Authors
 
