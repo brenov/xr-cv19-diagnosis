@@ -79,13 +79,13 @@ The following images present some results of the data augmentation process.
 <table>
   <tr>
     <td>
-      <img src="Dataset/Train/COVID/COVID-1.png" alt="1" width=300px height=300px>
+      <img src="Dataset/Train/COVID/COVID-1.png" alt="1" width=250px height=250px>
     </td>
     <td>
-      <img src="Augmented/Train/COVID/COVID-1_noisy.png" alt="2" width=300px height=300px>
+      <img src="Augmented/Train/COVID/COVID-1_noisy.png" alt="2" width=250px height=250px>
     </td>
     <td>
-      <img src="Augmented/Train/COVID/COVID-1_15rotated.png" alt="3" width=300px height=300px>
+      <img src="Augmented/Train/COVID/COVID-1_15rotated.png" alt="3" width=250px height=250px>
     </td>
   </tr>
   <tr>
@@ -95,13 +95,13 @@ The following images present some results of the data augmentation process.
   </tr>
   <tr>
     <td>
-      <img src="Augmented/Train/COVID/COVID-1_-15rotated.png" alt="1" width=300px height=300px>
+      <img src="Augmented/Train/COVID/COVID-1_-15rotated.png" alt="1" width=250px height=250px>
     </td>
     <td>
-      <img src="Augmented/Train/COVID/COVID-1_contrast.png" alt="2" width=300px height=300px>
+      <img src="Augmented/Train/COVID/COVID-1_contrast.png" alt="2" width=250px height=250px>
     </td>
     <td>
-      <img src="Augmented/Train/COVID/COVID-1_sharpness.png" alt="3" width=300px height=300px>
+      <img src="Augmented/Train/COVID/COVID-1_sharpness.png" alt="3" width=250px height=250px>
     </td>
   </tr>
   <tr>
