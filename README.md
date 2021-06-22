@@ -33,21 +33,25 @@ The following images present examples of such cases:
 <table>
   <tr>
     <td>
-      <img src=".github/Normal.png" alt="1" width=200px height=200px>
+      <img src=".github/Normal.png" alt="1" width=250px height=250px>
     </td>
     <td>
-      <img src=".github/Lung_Opacity.png" alt="2" width=200px height=200px>
-    </td>
-    <td>
-      <img src=".github/Viral_Pneumonia.png" alt="3" width=200px height=200px>
-    </td>
-    <td>
-      <img src=".github/COVID.png" alt="4" width=200px height=200px>
+      <img src=".github/Lung_Opacity.png" alt="2" width=250px height=250px>
     </td>
    </tr>
    <tr>
       <td>Normal</td>
       <td>Lung Opacity</td>
+   </tr>
+   <tr>
+    <td>
+      <img src=".github/Viral_Pneumonia.png" alt="3" width=250px height=250px>
+    </td>
+    <td>
+      <img src=".github/COVID.png" alt="4" width=250px height=250px>
+    </td>
+   </tr>
+   <tr>
       <td>Viral Pneumonia</td>
       <td>COVID-19</td>
   </tr>
