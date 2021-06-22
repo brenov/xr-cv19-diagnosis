@@ -1,25 +1,35 @@
 # Investigating the Impact of Using Image Processing Techniques in Chest X-Ray images for COVID-19 Diagnosis via Deep Learning
 
-## Motivation
+
+## Authors
+
+- [Breno Maurício de Freitas Viana](https://github.com/brenov) (11920060)
+- [Felipe Antunes Quirino](https://github.com/felipeaq) (12448645)
+
+
+## Introduction
 
 Since World Health Organization (WHO) recognized COVID-19 as a global threat, several works of different areas about the topic emerged.
 Regarding abnormalities detection, numerous works try to classify COVID-19 cases from Chest X-Ray images and images of other lung image acquisition methods.
-Most of these works applied Deep Learning (DL) techniques for predicting COVID-19 cases in the original images.
+Most of these works applied Deep Learning (DL) techniques for predicting COVID-19 and non-COVID-19 cases in the original lung images.
 
 
 ## Objective
 
 This work intends to investigate the impact of using image preprocessing techniques on the chest X-ray images in their classification in COVID-19 and non-COVID-19 cases.
-We believe that such a process may improve the COVID-19 diagnosis performed by the ResNet-50.
+We believe that such a process may improve the COVID-19 diagnosis performed by the ResNet-50 with the original chest X-ray images.
 
 
 ## Dataset
 
-COVID-19 Chest X-ray Database (https://www.kaggle.com/tawsifurrahman/covid19-radiography-database). The dataset present in this repository is just a small subset of the COVID-19 Chest X-ray Database.
+In this investigation, we are using the COVID-19 Chest X-ray Database from [Kaggle](https://www.kaggle.com/tawsifurrahman/covid19-radiography-database)
+(the dataset present in this repository is just a small subset of the COVID-19 Chest X-ray Database).
+Furthermore, it was originally provided by Chowdhury et al. [1] and Rahman et al. [2].
+This dataset contains chest X-ray images of healthy people (10,192) and people diagnosed with COVID-19, viral pneumonia (1,345), and lung opacity, i.e., non-COVID-19 lung infection (6,012).
+All the images are in PNG file format, and their resolution is 299x299 pixels.
+The following images present examples of such cases:
 
-### Example of input images
-
-<table >
+<table>
   <tr>
     <td>
       <img src=".github/Normal.png" alt="1" width=200px height=200px>
@@ -67,7 +77,8 @@ TODO
 TODO
 
 
-## Authors
+## References
 
-- Breno Maurício de Freitas Viana
-- Felipe Antunes Quirino
+[1] M.E.H. Chowdhury, T. Rahman, A. Khandakar, R. Mazhar, M.A. Kadir, Z.B. Mahbub, K.R. Islam, M.S. Khan, A. Iqbal, N. Al-Emadi, M.B.I. Reaz, M. T. Islam, “Can AI help in screening Viral and COVID-19 pneumonia?” IEEE Access, Vol. 8, 2020, pp. 132665 - 132676. Paper DOI: (https://doi.org/10.1109/ACCESS.2020.3010287).
+
+[2] Rahman, T., Khandakar, A., Qiblawey, Y., Tahir, A., Kiranyaz, S., Kashem, S.B.A., Islam, M.T., Maadeed, S.A., Zughaier, S.M., Khan, M.S. and Chowdhury, M.E., 2020. Exploring the Effect of Image Enhancement Techniques on COVID-19 Detection using Chest X-ray Images. Paper DOI: (https://doi.org/10.1016/j.compbiomed.2021.104319).
