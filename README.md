@@ -70,6 +70,27 @@ After the data augmentation, we used both the original images (from [Dataset](Da
 The CNN model and its training results are present in [Jupyter Notebook file](resnet-50-2.ipynb).
 In the next step of this wotk, we will perform the fine-tuning of the ResNet-50 model.
 
+### Noisy image	
+
+
+The first augmentation technique is the noisy addiction. It is basically taking the original image "F" + random noisy. 
+
+
+### 15-degree rotated image
+
+Other augmentation is rotating the image. It is the original image applied in the rotation equation. 
+
+
+### Contrast adjustment
+
+Also, we applied a contrast adjustment. i.e., 128 + C* F - C* 128. In this case, 128 because is the mid-value of the image in a [0-255] range. The variable F is the original image and C is the contrast level.
+
+
+### sharpeness adjustment
+
+Finally, the sharpness adjustment consists in applying the equation F + C * (F - G). In this case, F is the original image, G is the original image F blurred,  the variable C is the input of the adjustment level.
+
+
 
 ## Partial Results
 
@@ -111,7 +132,7 @@ The following images present some results of the data augmentation process.
   <tr>
     <td>-15-degree rotated image</td>
     <td>Image with contrast adjusted</td>
-    <td>Image with sharpeness enhanced</td>
+    <td>Image with sharpeness adjusted</td>
   </tr>
 </table>
 
