@@ -6,16 +6,21 @@ from pathlib import Path
 import imageio
 
 
+# PNG extension
+PNG = '.png'
+
 # Dataset paths
-DATASET_PATH = 'Dataset'
+DATASET_PATH = 'Dataset/Train'
 TRAIN_PATH = 'Train'
-TEST_PATH = 'Test'
 
 # Target directory
 AUGMENTED_PATH = 'Augmented'
 
-# PNG extension
-PNG = '.png'
+# Processing techniques
+CONTRAST = 'Contrast'
+SHARPNESS = 'Sharpness'
+ROTATION = 'Rotation'
+NOISE = 'Noise'
 
 
 def load():
@@ -56,47 +61,96 @@ def augmentate(filenames):
         # Get image class
         cls = common.get_class(filename)
 
-        # Get the image purpose
-        purpose = TRAIN_PATH if TRAIN_PATH in filename else TEST_PATH
-
         # Remove path prefix and PNG extension
         filename = filename.replace(PNG, '') \
             .replace(DATASET_PATH + '/', '') \
-            .replace(purpose + '/', '') \
             .replace(cls + '/', '')
 
-        # Build the path prefix of the purpose (train or test)
-        prefix = AUGMENTED_PATH + '/' + purpose + '/'
-        # Create a folder correponding to the image class
-        common.create_folder(prefix)
+        # Build the Augmented Dataset path
+        prefix = AUGMENTED_PATH + '/'
+
+        # Contrast
 
         # Build the path prefix of the image class
-        prefix = prefix + cls + '/'
+        prefixC = prefix + CONTRAST + '/'
         # Create a folder correponding to the image class
-        common.create_folder(prefix)
+        common.create_folder(prefixC)
+
+        # Build the path prefix of the image class
+        prefixC = prefixC + cls + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixC)
 
         # Update filename
-        filename = prefix + filename
+        filenameC = prefixC + filename
 
         # Adjust contrast
+        img1 = aug.adjust_contrast(img, 1.2)
+        imageio.imsave(filenameC + '_' + CONTRAST + '20' + PNG, img1)
         img1 = aug.adjust_contrast(img, 1.4)
-        imageio.imsave(filename + '_contrast' + PNG, img1)
+        imageio.imsave(filenameC + '_' + CONTRAST + '40' + PNG, img1)
+
+        # Sharpness
+
+        # Build the path prefix of the image class
+        prefixS = prefix + SHARPNESS + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixS)
+
+        # Build the path prefix of the image class
+        prefixS = prefixS + cls + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixS)
+
+        # Update filename
+        filenameS = prefixS + filename
 
         # Adjust sharpness
         img2 = aug.adjust_sharpness(img, 0.3, 3, 11)
-        imageio.imsave(filename + '_sharpness' + PNG, img2)
+        imageio.imsave(filenameS + '_' + SHARPNESS + '30-3-11' + PNG, img2)
+        img2 = aug.adjust_sharpness(img, 0.1, 1, 5)
+        imageio.imsave(filenameS + '_' + SHARPNESS + '10-1-5' + PNG, img2)
+
+        # Noise
+
+        # Build the path prefix of the image class
+        prefixN = prefix + NOISE + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixN)
+
+        # Build the path prefix of the image class
+        prefixN = prefixN + cls + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixN)
+
+        # Update filename
+        filenameN = prefixN + filename
 
         # Insert noise
         img3 = aug.add_noise(img, 10, 10)
-        imageio.imsave(filename + '_noisy' + PNG, img3)
+        imageio.imsave(filenameN + '_' + NOISE + '10' + PNG, img3)
+        img3 = aug.add_noise(img, 20, 20)
+        imageio.imsave(filenameN + '_' + NOISE + '20' + PNG, img3)
 
-        # Rotate 15 degrees
-        img4 = aug.rotate(img, 15)
-        imageio.imsave(filename + '_15rotated' + PNG, img4)
+        # Rotation
 
-        # Rotate -15 degrees
-        img5 = aug.rotate(img, -15)
-        imageio.imsave(filename + '_-15rotated' + PNG, img5)
+        # Build the path prefix of the image class
+        prefixR = prefix + ROTATION + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixR)
+
+        # Build the path prefix of the image class
+        prefixR = prefixR + cls + '/'
+        # Create a folder correponding to the image class
+        common.create_folder(prefixR)
+
+        # Update filename
+        filenameR = prefixR + filename
+
+        img4 = aug.rotate(img, 15) # Rotate 15 degrees
+        imageio.imsave(filenameR + '_' + ROTATION + '15' + PNG, img4)
+        img5 = aug.rotate(img, -15) # Rotate -15 degrees
+        imageio.imsave(filenameR + '_' + ROTATION + '-15' + PNG, img5)
 
 
 def main():
