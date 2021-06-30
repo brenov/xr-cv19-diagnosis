@@ -23,6 +23,26 @@ def _normalize(img):
     return img
 
 
+def luminance(img):
+    """
+    Turn the input RGB image as a grayscale image.
+
+    Parameters
+    ----------
+    img : ndarray
+        Input image data.
+
+    Returns
+    -------
+    out : ndarray
+        Grayscale image.
+    """
+    N, M, _ = img.shape
+    out = np.empty(img.shape)
+    out = 0.299 * img[:,:,0] + 0.587 * img[:,:,1] + 0.114 * img[:,:,2]
+    return out.astype(np.uint8)
+
+
 def apply_blur(f, sigma, k):
     """
     Function to apply blur in images.

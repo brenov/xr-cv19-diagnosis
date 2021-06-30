@@ -4,6 +4,7 @@ import common
 import augmentation as aug
 from pathlib import Path
 import imageio
+import numpy as np
 
 
 # PNG extension
@@ -57,6 +58,10 @@ def augmentate(filenames):
 
         # Load the image
         img = imageio.imread(filename)
+
+        # If the image is RGB then convert it to grayscale
+        if len(img.shape) == 3 and img.shape[2] == 3:
+            img = aug.luminance(img)
 
         # Get image class
         cls = common.get_class(filename)
