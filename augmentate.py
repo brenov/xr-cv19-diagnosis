@@ -85,10 +85,10 @@ def augmentate(filenames):
         filenameC = prefixC + filename
 
         # Adjust contrast
+        img1 = aug.adjust_contrast(img, 1.1)
+        imageio.imsave(filenameC + '_' + CONTRAST + '10' + PNG, img1)
         img1 = aug.adjust_contrast(img, 1.2)
         imageio.imsave(filenameC + '_' + CONTRAST + '20' + PNG, img1)
-        img1 = aug.adjust_contrast(img, 1.4)
-        imageio.imsave(filenameC + '_' + CONTRAST + '40' + PNG, img1)
 
         # Sharpness
 
@@ -106,10 +106,10 @@ def augmentate(filenames):
         filenameS = prefixS + filename
 
         # Adjust sharpness
+        img2 = aug.adjust_sharpness(img, 0.1, 1.5, 7.5)
+        imageio.imsave(filenameS + '_' + SHARPNESS + '10-1d5-7d5' + PNG, img2)
         img2 = aug.adjust_sharpness(img, 0.3, 3, 11)
         imageio.imsave(filenameS + '_' + SHARPNESS + '30-3-11' + PNG, img2)
-        img2 = aug.adjust_sharpness(img, 0.1, 1, 5)
-        imageio.imsave(filenameS + '_' + SHARPNESS + '10-1-5' + PNG, img2)
 
         # Noise
 
@@ -127,10 +127,10 @@ def augmentate(filenames):
         filenameN = prefixN + filename
 
         # Insert noise
+        img3 = aug.add_noise(img, 5, 5)
+        imageio.imsave(filenameN + '_' + NOISE + '5' + PNG, img3)
         img3 = aug.add_noise(img, 10, 10)
         imageio.imsave(filenameN + '_' + NOISE + '10' + PNG, img3)
-        img3 = aug.add_noise(img, 20, 20)
-        imageio.imsave(filenameN + '_' + NOISE + '20' + PNG, img3)
 
         # Rotation
 
