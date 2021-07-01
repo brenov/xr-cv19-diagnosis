@@ -15,7 +15,7 @@ from tensorflow.keras.applications.resnet50 import preprocess_input, decode_pred
 from tensorflow.python.keras import models
 import tensorflow as tf
 from sklearn.preprocessing import LabelBinarizer
-
+import sys
 
 # ### Print the device configuration
 
@@ -112,8 +112,8 @@ def load_dir(paths):
 # In[30]:
 
 
-TrainX, TrainY = load_dir(['Dataset/Train', 'Augmented/Train'])
-
+TrainX, TrainY = load_dir(['Dataset/Train', 'Augmented/Train/{}'.format(sys.argv[1])])
+print ("-->",TrainX.shape)
 
 # In[ ]:
 
@@ -189,7 +189,7 @@ model.summary()
 # In[34]:
 
 
-model.fit(x=TrainX, y=TrainY, epochs=10)
+model.fit(x=TrainX, y=TrainY, epochs=int(sys.argv[2]),batch_size=32)
 
 
 # 
@@ -197,5 +197,6 @@ model.fit(x=TrainX, y=TrainY, epochs=10)
 # In[36]:
 
 
+model.save('{}.h5'.format(sys.argv[1]))
 print(model.predict(TrainX))
 
