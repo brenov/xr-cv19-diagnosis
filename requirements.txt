@@ -2,3 +2,4 @@ imageio
 numpy
 scipy
 tensorflow
+sklearn
