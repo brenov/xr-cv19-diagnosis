@@ -173,9 +173,13 @@ For all these cases, we tested with the remaining 800 original images andn 60 ep
       <img src="Results/metrics.png" alt="1" width=400px height=300px>
     </td>
   </tr>
+  <tr>
+    <td>Figure 1</td>
+  </tr>
 </table>
 
-As we can observe in the above image, all but the experiment with sharpness-adjusted images presented the same balanced accuracy.
+The Figure 1 shows the results of balance accuracy, F1-score, precision, and recall by experiment.
+As we can observe in the image, all but the experiment with sharpness-adjusted images presented the same balanced accuracy.
 This particular experiment was the only one to outperform in both balanced accuracy and F1-score.
 
 In terms of precision, all the experiments that used the images generated processing techniques beat the experiment with only original images.
@@ -184,11 +188,18 @@ The single exception was the experiment with sharpness-adjusted images that tied
 
 We believe that the augmented images increased the dataset unbalance since there are more NON-COVID images than the COVID ones.
 
+The figures 2, 3, 4, 5, and 6 present the probability distributions of the tests of each experiment.
+The results closer to 0 are the images classified as NON-COVID cases and the ones closer to 1 are the images classified as COVID cases.
+As expected, some NON-COVID and COVID cases are misclassified.
+
 <table>
   <tr>
     <td>
       <img src="Results/dist_None.png" alt="1" width=400px height=300px>
     </td>
+  </tr>
+  <tr>
+    <td>Figure 2</td>
   </tr>
 </table>
 
@@ -202,6 +213,10 @@ We believe that the augmented images increased the dataset unbalance since there
     </td>
   </tr>
   <tr>
+    <td>Figure 3</td>
+    <td>Figure 4</td>
+  </tr>
+  <tr>
     <td>
       <img src="Results/dist_Sharpness.png" alt="3" width=400px height=300px>
     </td>
@@ -209,13 +224,22 @@ We believe that the augmented images increased the dataset unbalance since there
       <img src="Results/dist_Rotation.png" alt="4" width=400px height=300px>
     </td>
   </tr>
+  <tr>
+    <td>Figure 5</td>
+    <td>Figure 6</td>
+  </tr>
 </table>
+
+The figures 7, 8, 9, 10, and 11 present confusion matrices for each experiment.
 
 <table>
   <tr>
     <td>
       <img src="Results/heatmap_None.png" alt="1" width=300px height=250px>
     </td>
+  </tr>
+  <tr>
+    <td>Figure 7</td>
   </tr>
 </table>
 
@@ -229,12 +253,20 @@ We believe that the augmented images increased the dataset unbalance since there
     </td>
   </tr>
   <tr>
+    <td>Figure 8</td>
+    <td>Figure 9</td>
+  </tr>
+  <tr>
     <td>
       <img src="Results/heatmap_Sharpness.png" alt="3" width=300px height=250px>
     </td>
     <td>
       <img src="Results/heatmap_Rotation.png" alt="4" width=300px height=250px>
     </td>
+  </tr>
+  <tr>
+    <td>Figure 10</td>
+    <td>Figure 11</td>
   </tr>
 </table>
 
