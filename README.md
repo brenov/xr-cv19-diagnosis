@@ -168,6 +168,22 @@ Regarding the ResNet-50, we performed the following experiments:
 For all these cases, we tested with the remaining 800 original images.
 
 
+## What We Learned
+
+The dataset presents some irregularities, such as children's lungs only of NON-COVID cases, and the X-ray images were collected from different X-ray machines.
+These irregularities may affect badly the training and, consequently, the quality resulting model.
+
+Deep Learning approaches are very computationally expensive, and we needed a powerful machine to perform our experiments.
+Fortunately, we did not have a problem finding such a powerful machine.
+This machine was vital since we ran the first experiment with a gross error in our code.
+
+Besides, the error was that the path to augmented images was wrong.
+Therefore, in our first experiment, we trained the ResNet-50 only with the 3.200 original images.
+Still, the executions presented significantly different results for the same set of images.
+Then we could conclude that the random parameters may influence a lot of the resulting model.
+However, this could have occurred due to the small dataset we used (a subset of the original one).
+
+
 ## References
 
 [1] M.E.H. Chowdhury, T. Rahman, A. Khandakar, R. Mazhar, M.A. Kadir, Z.B. Mahbub, K.R. Islam, M.S. Khan, A. Iqbal, N. Al-Emadi, M.B.I. Reaz, M. T. Islam, “Can AI help in screening Viral and COVID-19 pneumonia?” IEEE Access, Vol. 8, 2020, pp. 132665 - 132676. Paper DOI: (https://doi.org/10.1109/ACCESS.2020.3010287).
