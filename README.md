@@ -165,7 +165,7 @@ Regarding the ResNet-50, we performed the following experiments:
  - Train the CNN with 3.200 original images and 6.400 images with sharpness adjusted (total of 9.600 images).
  - Train the CNN with 3.200 original images and 6.400 rotated images (total of 9.600 images).
 
-For all these cases, we tested with the remaining 800 original images andn 60 epochs.
+For all these cases, we tested with the remaining 800 original images and 60 epochs.
 
 <table>
   <tr>
