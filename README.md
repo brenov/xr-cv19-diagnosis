@@ -115,8 +115,8 @@ The following images present some results of the data augmentation process.
     </td>
   </tr>
   <tr>
-    <td>Noisy image #1</td>
-    <td>Noisy image #2</td>
+    <td>Noisy image #1 (mean: 5, std: 5)</td>
+    <td>Noisy image #2 (mean: 10, std: 10)</td>
   </tr>
   <tr>
     <td>
@@ -127,8 +127,8 @@ The following images present some results of the data augmentation process.
     </td>
   </tr>
   <tr>
-    <td>Image with contrast adjusted #1</td>
-    <td>Image with contrast adjusted #2</td>
+    <td>Image with contrast adjusted #1 (factor: 1.1)</td>
+    <td>Image with contrast adjusted #2 (factor: 1.2)</td>
   </tr>
   <tr>
     <td>
@@ -139,8 +139,8 @@ The following images present some results of the data augmentation process.
     </td>
   </tr>
   <tr>
-    <td>Rotated image #1</td>
-    <td>Rotated image #2</td>
+    <td>Rotated image #1 (angle: 15 degrees)</td>
+    <td>Rotated image #2 (angle: -15 degrees)</td>
   </tr>
   <tr>
     <td>
@@ -151,8 +151,8 @@ The following images present some results of the data augmentation process.
     </td>
   </tr>
   <tr>
-    <td>Image with sharpness adjusted #1</td>
-    <td>Image with sharpness adjusted #2</td>
+    <td>Image with sharpness adjusted #1 (factor: 0.1, sigma: 1.5, k: 7.5)</td>
+    <td>Image with sharpness adjusted #2 (factor: 0.3, sigma: 3, k: 11)</td>
   </tr>
 </table>
 
