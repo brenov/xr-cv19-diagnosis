@@ -3,3 +3,6 @@ numpy
 scipy
 tensorflow
 sklearn
+pandas
+seabotn
+matplotlib

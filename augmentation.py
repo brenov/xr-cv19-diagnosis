@@ -121,12 +121,12 @@ def adjust_sharpness(img, amount, sigma, k):
     ----------
     img : ndarray
         Input image data.
-    alpha: float
-        image offset.
+    amount: float
+        Adjustment intensity.
     sigma1: float
-        first standard deviation.
-    sigma2: float
-        second standard deviation.
+        Standard deviation of the gaussinal filter.
+    k: int
+        Size of the gaussian filter.
 
     Returns
     -------
