@@ -271,6 +271,13 @@ The figures 7, 8, 9, 10, and 11 present confusion matrices for each experiment.
 </table>
 
 
+## Future Works
+
+A possible future work is to rerun the experiments with a bigger dataset to verify if the results are similar to ours.
+We could also run each experiment more than once to observe the impact of the random initialization of the neuron weights.
+Besides, we could apply the best-found processing image techniques to generate a single image and observe if they improve the model learning.
+
+
 ## What We Learned
 
 The dataset presents some irregularities, such as children's lungs only of NON-COVID cases, and the X-ray images were collected from different X-ray machines.
