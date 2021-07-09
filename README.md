@@ -157,7 +157,15 @@ The following images present some results of the data augmentation process.
   </tr>
 </table>
 
+Regarding the ResNet-50, we performed the following experiments:
 
+ - Train the CNN with 3.200 original images.
+ - Train the CNN with 3.200 original images and 6.400 noisy images (total of 9.600 images).
+ - Train the CNN with 3.200 original images and 6.400 images with contrast adjusted (total of 9.600 images).
+ - Train the CNN with 3.200 original images and 6.400 images with sharpness adjusted (total of 9.600 images).
+ - Train the CNN with 3.200 original images and 6.400 rotated images (total of 9.600 images).
+
+For all these cases, we tested with the remaining 800 original images.
 
 
 ## References
