@@ -189,7 +189,7 @@ The single exception was the experiment with sharpness-adjusted images that tied
 We believe that the augmented images increased the dataset unbalance since there are more NON-COVID images than the COVID ones.
 
 The figures 2, 3, 4, 5, and 6 present the probability distributions of the tests of each experiment.
-The results less than 0.5 are the images classified as NON-COVID cases and the ones closer to 1 are the images classified as COVID cases. The blue label are the COVID imagens and the yellow label are the NON-COVID images. As expected, some NON-COVID and COVID cases are misclassified. As we can see, in figure 2, there are some images with a degree of uncertainty if is COVID or NON-COVID (in a range of 0.1 unil 0.9). Also there are high degree of certainty predicted as false positive or false negative. As shown in figures 3, 4, 5 and 6 the augmented data reduced uncertainty of the images, however, kept some miss predictions.
+The results less than 0.5 are the images classified as NON-COVID cases, and the ones closer to 1 are the images classified as COVID cases. The blue label are the COVID images and the yellow label are the NON-COVID images. As expected, some NON-COVID and COVID cases are misclassified. As we can see, in figure 2, there are some images with a degree of uncertainty if is COVID or NON-COVID (in a range of 0.1 until 0.9). Also, there are high degree of certainty predicted as false positive or false negative. As shown in figures 3, 4, 5 and 6 the augmented data reduced uncertainty of the images, however, kept some miss predictions.
 
 <table>
   <tr>
@@ -229,7 +229,7 @@ The results less than 0.5 are the images classified as NON-COVID cases and the o
   </tr>
 </table>
 
-The figures 7, 8, 9, 10, and 11 present confusion matrices for each experiment.
+The figures 7, 8, 9, 10, and 11 present confusion matrices for each experiment. In these figures, we could see the four classification cases: True Negatives (line 1 column 1), False positives (line 1 column 2), False negatives (line 2 column 1), True positives (line 2 column 2). As we can see, all techniques applied decrease false negatives and with exception to the sharpness adjustment, they increase the number of false positives. In this case, more false negative is worse than more false positives, thus the augmentation techniques help avoid the worst case.
 
 <table>
   <tr>
