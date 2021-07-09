@@ -175,7 +175,7 @@ These irregularities may affect badly the training and, consequently, the qualit
 
 Deep Learning approaches are very computationally expensive, and we needed a powerful machine to perform our experiments.
 Fortunately, we did not have a problem finding such a powerful machine.
-This machine was vital since we ran the first experiment with a gross error in our code.
+This machine was vital since we ran the first experiment with a gross error in our code, and we had time to rerun the experiment with the fixed code.
 
 Besides, the error was that the path to augmented images was wrong.
 Therefore, in our first experiment, we trained the ResNet-50 only with the 3.200 original images.
