@@ -91,7 +91,7 @@ In the following section, we describe our experiments and their results.
 As we said earlier, we selected 4.000 images (1.000 COVID and 3.000 NON-COVID images) for training and testing the ResNet-50.
 However, to keep in this repository ([Dataset](Dataset)), we selected only 28 images of those images.
 
-The results are present in the folder [Augmented](Augmented) and in [Jupyter Notebook file](resnet-50-2.ipynb).
+The results are present in the folder [Augmented](Augmented) and in [Python file](resnet-50.py).
 Fisrt, the folder [Augmented](Augmented) presents a total of 224 images all of them are augmented images generated from the [Dataset](Dataset).
 The following images present some results of the data augmentation process.
 
@@ -165,12 +165,29 @@ Regarding the ResNet-50, we performed the following experiments:
  - Train the CNN with 3.200 original images and 6.400 images with sharpness adjusted (total of 9.600 images).
  - Train the CNN with 3.200 original images and 6.400 rotated images (total of 9.600 images).
 
-For all these cases, we tested with the remaining 800 original images.
+For all these cases, we tested with the remaining 800 original images andn 60 epochs.
 
 <table>
   <tr>
     <td>
-      <img src="Results/metrics.png" alt="1" width=450px height=325px>
+      <img src="Results/metrics.png" alt="1" width=400px height=300px>
+    </td>
+  </tr>
+</table>
+
+As we can observe in the above image, all but the experiment with sharpness-adjusted images presented the same balanced accuracy.
+This particular experiment was the only one to outperform in both balanced accuracy and F1-score.
+
+In terms of precision, all the experiments that used the images generated processing techniques beat the experiment with only original images.
+However, concerning the recall metric, most experiments were worse than the experiment with only original images.
+The single exception was the experiment with sharpness-adjusted images that tied with the experiment with only original images.
+
+We believe that the augmented images increased the dataset unbalance since there are more NON-COVID images than the COVID ones.
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/dist_None.png" alt="1" width=400px height=300px>
     </td>
   </tr>
 </table>
@@ -178,26 +195,18 @@ For all these cases, we tested with the remaining 800 original images.
 <table>
   <tr>
     <td>
-      <img src="Results/dist_None.png" alt="1" width=450px height=325px>
-    </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td>
-      <img src="Results/dist_Noise.png" alt="1" width=450px height=325px>
+      <img src="Results/dist_Noise.png" alt="1" width=400px height=300px>
     </td>
     <td>
-      <img src="Results/dist_Contrast.png" alt="2" width=450px height=325px>
+      <img src="Results/dist_Contrast.png" alt="2" width=400px height=300px>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="Results/dist_Sharpness.png" alt="3" width=450px height=325px>
+      <img src="Results/dist_Sharpness.png" alt="3" width=400px height=300px>
     </td>
     <td>
-      <img src="Results/dist_Rotation.png" alt="4" width=450px height=325px>
+      <img src="Results/dist_Rotation.png" alt="4" width=400px height=300px>
     </td>
   </tr>
 </table>
