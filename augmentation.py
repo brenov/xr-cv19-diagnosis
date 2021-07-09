@@ -51,6 +51,10 @@ def apply_blur(f, sigma, k):
     ----------
     img : ndarray
         Input image data.
+    sigma: float
+        Standard deviation of the gaussinal filter.
+    k: int
+        Size of the gaussian filter.
 
     Returns
     -------
@@ -123,7 +127,7 @@ def adjust_sharpness(img, amount, sigma, k):
         Input image data.
     amount: float
         Adjustment intensity.
-    sigma1: float
+    sigma: float
         Standard deviation of the gaussinal filter.
     k: int
         Size of the gaussian filter.
