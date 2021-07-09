@@ -38,22 +38,22 @@ The following images present examples of such cases:
     <td>
       <img src=".github/Lung_Opacity.png" alt="2" width=250px height=250px>
     </td>
-   </tr>
-   <tr>
-      <td>Normal</td>
-      <td>Lung Opacity</td>
-   </tr>
-   <tr>
+  </tr>
+  <tr>
+    <td>Normal</td>
+    <td>Lung Opacity</td>
+  </tr>
+  <tr>
     <td>
       <img src=".github/Viral_Pneumonia.png" alt="3" width=250px height=250px>
     </td>
     <td>
       <img src=".github/COVID.png" alt="4" width=250px height=250px>
     </td>
-   </tr>
-   <tr>
-      <td>Viral Pneumonia</td>
-      <td>COVID-19</td>
+  </tr>
+  <tr>
+    <td>Viral Pneumonia</td>
+    <td>COVID-19</td>
   </tr>
 </table>
 
@@ -166,6 +166,68 @@ Regarding the ResNet-50, we performed the following experiments:
  - Train the CNN with 3.200 original images and 6.400 rotated images (total of 9.600 images).
 
 For all these cases, we tested with the remaining 800 original images.
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/metrics.png" alt="1" width=450px height=325px>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/dist_None.png" alt="1" width=450px height=325px>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/dist_Noise.png" alt="1" width=450px height=325px>
+    </td>
+    <td>
+      <img src="Results/dist_Contrast.png" alt="2" width=450px height=325px>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="Results/dist_Sharpness.png" alt="3" width=450px height=325px>
+    </td>
+    <td>
+      <img src="Results/dist_Rotation.png" alt="4" width=450px height=325px>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/heatmap_None.png" alt="1" width=300px height=250px>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/heatmap_Noise.png" alt="1" width=300px height=250px>
+    </td>
+    <td>
+      <img src="Results/heatmap_Contrast.png" alt="2" width=300px height=250px>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="Results/heatmap_Sharpness.png" alt="3" width=300px height=250px>
+    </td>
+    <td>
+      <img src="Results/heatmap_Rotation.png" alt="4" width=300px height=250px>
+    </td>
+  </tr>
+</table>
 
 
 ## What We Learned
