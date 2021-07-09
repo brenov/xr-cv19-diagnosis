@@ -57,14 +57,19 @@ The following images present examples of such cases:
   </tr>
 </table>
 
+Since we this is a preliminary stage of our research, we selected the first 1.000 images of each class from the database to perform our experiments.
+
 
 ## Methodology
 
 To carry out our investigation, we first perform data augmentation by using the following image processing techniques: noise insertion, rotation, contrast adjustment, and sharpness adjustment.
+Before the augmentation, we verify if they are represented in a single grayscale channel or RBG images.
+In the latter case, we perform the luminance method to convert the images into a single grayscale channel.
 These image processing methods are implemented in the [augmentation.py](augmentation.py) file.
 The data augmentation is performed by the script [augmentate.py](augmentate.py).
-This script automatizes the data augmentation process by reading all the images from [Dataset](Dataset) and creating five new versions of each original image: noisy image, 15 degrees rotated image, -15 degrees rotated image, image with contrast adjusted, and image with sharpness adjustment.
-We opt for 15-degree and -15-degree rotations to simulate and maybe fix some badly positioned chest X-rays.
+This script automatizes the data augmentation process by reading all the images from [Dataset](Dataset) and creating eight new versions of each original image, two for each processing image technique.
+We rotate the images in 15 degrees and -15 degrees; we opt for these values to simulate and (maybe) fix some badly positioned chest X-rays.
+We generated images with two intensities of noise (both means and standard deviations equal to 5 and 10), contrast adjustment (factor equal to 1.1 and 1.2), and sharpness adjustment (factors equal to 0.1 and 0.3, sigma values equal to 1.5 and 3, and k values equal to 7.5 and 11) for the remaining techniques.
 
 - **Noise Insertion**: consists basically in inserting random pixels in the input image.
 - **Contrast Adjustment**: comprises the following equation `128 + C * F - C * 128`, where `F` is the input image, `C` is the contrast level, and the value `128` is the mid-value the [0-255] range.
