@@ -229,7 +229,7 @@ The results less than 0.5 are the images classified as NON-COVID cases, and the 
   </tr>
 </table>
 
-The figures 7, 8, 9, 10, and 11 present confusion matrices for each experiment. In these figures, we could see the four classification cases: True Negatives (line 1 column 1), False positives (line 1 column 2), False negatives (line 2 column 1), True positives (line 2 column 2). As we can see, all techniques applied decrease false negatives and with exception to the sharpness adjustment, they increase the number of false positives. In this case, more false negative is worse than more false positives, thus the augmentation techniques help avoid the worst case.
+The figures 7, 8, 9, 10, and 11 present confusion matrices for each experiment. In these figures, we could see the four classification cases: True Negatives (line 1 column 1), False positives (line 1 column 2), False negatives (line 2 column 1), True positives (line 2 column 2). As we can see, all techniques applied decrease false negatives and with exception to the sharpness adjustment, they increase the number of false positives. 
 
 <table>
   <tr>
