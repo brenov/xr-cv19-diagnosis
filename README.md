@@ -166,6 +166,7 @@ Regarding the ResNet-50, we performed the following experiments:
  - Train the CNN with 3.200 original images and 6.400 rotated images (total of 9.600 images).
 
 For all these cases, we tested with the remaining 800 original images and 60 epochs.
+The training resulted in these [h5 files](https://drive.google.com/drive/folders/173EBR4pyDFpA5Shl01ujPDBKuDv7wTKa?usp=sharing).
 
 <table>
   <tr>
@@ -178,7 +179,7 @@ For all these cases, we tested with the remaining 800 original images and 60 epo
   </tr>
 </table>
 
-The Figure 1 shows the results of balance accuracy, F1-score, precision, and recall by experiment.
+Figure 1 shows the results of balance accuracy, F1-score, precision, and recall by experiment.
 As we can observe in the image, all but the experiment with sharpness-adjusted images presented the same balanced accuracy.
 This particular experiment was the only one to outperform in both balanced accuracy and F1-score.
 
@@ -278,6 +279,14 @@ up
 </table>
 
 
+## Conclusion
+
+This work investigated the impact of using processing images as a data augmentation approach for fine-tuning the ResNet-50.
+First, we successfully implemented the processing image techniques of noise insertion, rotation, contrast adjustment, and sharpness adjustment.
+Our experiments showed that all these techniques improved the precision of the COVID classification, although only the sharpness adjustment kept the recall of the training with only original images.
+Therefore, we conclude that our project was successful within the scope of the processing image course and as a preliminary research investigation.
+
+
 ## Future Works
 
 A possible future work is to rerun the experiments with a bigger dataset to verify if the results are similar to ours.
@@ -299,6 +308,16 @@ Therefore, in our first experiment, we trained the ResNet-50 only with the 3.200
 Still, the executions presented significantly different results for the same set of images.
 Then we could conclude that the random parameters may influence a lot of the resulting model.
 However, this could have occurred due to the small dataset we used (a subset of the original one).
+
+
+## Tasks by Author
+
+- [Breno Maurício de Freitas Viana](https://github.com/brenov) (11920060)
+  - Implementation of noise insertion, rotation, and luminance techniques.
+  - Development of the script for automatizing the data augmentation.
+- [Felipe Antunes Quirino](https://github.com/felipeaq) (12448645)
+  - Implementation of contrast and sharpness adjustment techniques.
+  - Configuration and development of the CNN model with ResNet-50.
 
 
 ## References
