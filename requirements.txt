@@ -4,5 +4,5 @@ scipy
 tensorflow
 sklearn
 pandas
-seabotn
+seaborn
 matplotlib

@@ -25,7 +25,7 @@ def _normalize(img):
 
 def luminance(img):
     """
-    Turn the input RGB image as a grayscale image.
+    Turn the input RGB image into a grayscale image.
 
     Parameters
     ----------
@@ -52,7 +52,7 @@ def apply_blur(f, sigma, k):
     img : ndarray
         Input image data.
     sigma: float
-        Standard deviation of the gaussinal filter.
+        Standard deviation of the gaussian filter.
     k: int
         Size of the gaussian filter.
 

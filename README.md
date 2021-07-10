@@ -27,7 +27,7 @@ In this investigation, we are using the COVID-19 Chest X-ray Database from [Kagg
 (the dataset present in this repository ([Dataset](Dataset)) has 40 images, and it is just a small subset of the COVID-19 Chest X-ray Database).
 Furthermore, it was originally provided by Chowdhury et al. [1] and Rahman et al. [2].
 This dataset contains chest X-ray images of healthy people (10,192) and people diagnosed with COVID-19, viral pneumonia (1,345), and lung opacity, i.e., non-COVID-19 lung infection (6,012).
-All the images are gray-scale in PNG file format, and their resolution is 299x299 pixels.
+All the images are gray-scale in PNG file format (but some of them are represented with RGB channels), and their resolution is 299x299 pixels.
 The following images present examples of such cases:
 
 <table>
@@ -71,7 +71,7 @@ These image processing methods are implemented in the [augmentation.py](augmenta
 The data augmentation is performed by the script [augmentate.py](augmentate.py).
 This script automatizes the data augmentation process by reading all the images from [Dataset](Dataset) and creating eight new versions of each original image, two for each processing image technique.
 We rotate the images in 15 degrees and -15 degrees; we opt for these values to simulate and (maybe) fix some badly positioned chest X-rays.
-We generated images with two intensities of noise (both means and standard deviations equal to 5 and 10), contrast adjustment (factor equal to 1.1 and 1.2), and sharpness adjustment (factors equal to 0.1 and 0.3, sigma values equal to 1.5 and 3, and k values equal to 7.5 and 11) for the remaining techniques.
+We generated images with two intensities of noise (both means and standard deviations equal to 5 and 10), contrast adjustment (factor equal to 1.1 and 1.2), and sharpness adjustment (intensity equal to 0.1 and 0.3, sigma values equal to 1.5 and 3, and k values equal to 7.5 and 11) for the remaining techniques.
 We avoid using too high values since, so far, we did not have expert advice.
 
 - **Noise Insertion**: consists basically in inserting random pixels in the input image.
@@ -91,9 +91,11 @@ In the following section, we describe our experiments and their results.
 As we said earlier, we selected 4.000 images (1.000 COVID and 3.000 NON-COVID images) for training and testing the ResNet-50.
 However, to keep in this repository ([Dataset](Dataset)), we selected only 28 images of those images.
 
-The results are present in the folder [Augmented](Augmented) and in [Jupyter Notebook file](resnet-50-2.ipynb).
-Fisrt, the folder [Augmented](Augmented) presents a total of 224 images all of them are augmented images generated from the [Dataset](Dataset).
+The results are present in the folder [Augmented](Augmented) and in [Python file](resnet-50.py).
+First, the folder [Augmented](Augmented) presents a total of 224 images.
+All of them are augmented images generated from the [Dataset](Dataset).
 The following images present some results of the data augmentation process.
+[demo-processing-images.ipynb](demo-processing-images.ipynb) is a Jupiter Notebook file demonstrating the use of the processing image techniques.
 
 <table>
   <tr>
@@ -152,8 +154,8 @@ The following images present some results of the data augmentation process.
     </td>
   </tr>
   <tr>
-    <td>Image with sharpness adjusted #1 (factor: 0.1, sigma: 1.5, k: 7.5)</td>
-    <td>Image with sharpness adjusted #2 (factor: 0.3, sigma: 3, k: 11)</td>
+    <td>Image with sharpness adjusted #1 (intensity: 0.1, sigma: 1.5, k: 7.5)</td>
+    <td>Image with sharpness adjusted #2 (intensity: 0.3, sigma: 3, k: 11)</td>
   </tr>
 </table>
 
@@ -165,48 +167,89 @@ Regarding the ResNet-50, we performed the following experiments:
  - Train the CNN with 3.200 original images and 6.400 images with sharpness adjusted (total of 9.600 images).
  - Train the CNN with 3.200 original images and 6.400 rotated images (total of 9.600 images).
 
-For all these cases, we tested with the remaining 800 original images.
+For all these cases, we tested with the remaining 800 original images and 60 epochs.
+The training resulted in these [h5 files](https://drive.google.com/drive/folders/173EBR4pyDFpA5Shl01ujPDBKuDv7wTKa?usp=sharing).
 
 <table>
   <tr>
     <td>
-      <img src="Results/metrics.png" alt="1" width=450px height=325px>
+      <img src="Results/metrics.png" alt="1" width=400px height=300px>
     </td>
+  </tr>
+  <tr>
+    <td>Figure 1</td>
+  </tr>
+</table>
+
+Figure 1 shows the results of balance accuracy, F1-score, precision, and recall by experiment.
+As we can observe in the image, all but the experiment with sharpness-adjusted images presented the same balanced accuracy.
+This particular experiment was the only one to outperform in both balanced accuracy and F1-score.
+
+In terms of precision, all the experiments that used the images generated processing techniques beat the experiment with only original images.
+However, concerning the recall metric, most experiments were worse than the experiment with only original images.
+The single exception was the experiment with sharpness-adjusted images that tied with the experiment with only original images.
+
+We believe that the augmented images increased the dataset unbalance since there are more NON-COVID images than the COVID ones.
+
+Figures 2, 3, 4, 5, and 6 show the probability distributions for each experiment.
+The values less than 0.5 are the images classified as NON-COVID cases, and the ones closer to 1 are the images classified as COVID cases.
+The blue label is for the COVID images, and the yellow label is for the NON-COVID images.
+As expected, some NON-COVID and COVID cases are misclassified.
+Figure 2 shows that some chest X-ray images have a degree of uncertainty regarding COVID or NON-COVID classification (in a range of 0.1 until 0.9).
+Also, there is a high degree of certainty predicted as false positives or false negatives.
+As shown in figures 3, 4, 5, and 6, the augmented data reduced the uncertainty of the images; however, it kept some miss predictions.
+
+<table>
+  <tr>
+    <td>
+      <img src="Results/dist_None.png" alt="1" width=400px height=300px>
+    </td>
+  </tr>
+  <tr>
+    <td>Figure 2</td>
   </tr>
 </table>
 
 <table>
   <tr>
     <td>
-      <img src="Results/dist_None.png" alt="1" width=450px height=325px>
-    </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td>
-      <img src="Results/dist_Noise.png" alt="1" width=450px height=325px>
+      <img src="Results/dist_Noise.png" alt="1" width=400px height=300px>
     </td>
     <td>
-      <img src="Results/dist_Contrast.png" alt="2" width=450px height=325px>
+      <img src="Results/dist_Contrast.png" alt="2" width=400px height=300px>
     </td>
   </tr>
   <tr>
+    <td>Figure 3</td>
+    <td>Figure 4</td>
+  </tr>
+  <tr>
     <td>
-      <img src="Results/dist_Sharpness.png" alt="3" width=450px height=325px>
+      <img src="Results/dist_Sharpness.png" alt="3" width=400px height=300px>
     </td>
     <td>
-      <img src="Results/dist_Rotation.png" alt="4" width=450px height=325px>
+      <img src="Results/dist_Rotation.png" alt="4" width=400px height=300px>
     </td>
+  </tr>
+  <tr>
+    <td>Figure 5</td>
+    <td>Figure 6</td>
   </tr>
 </table>
 
+Figures 7, 8, 9, 10, and 11 show the confusion matrices for each experiment.
+In these figures, we can see the four classification cases: True Negatives (line 1 column 1), False positives (line 1 column 2), False negatives (line 2 column 1), True positives (line 2 column 2).
+These matrices show that all processing image techniques we applied to the chest X-ray images can decrease false negatives.
+Besides, except for the sharpness adjustment, the techniques can increase the number of false positives.
+up
 <table>
   <tr>
     <td>
       <img src="Results/heatmap_None.png" alt="1" width=300px height=250px>
     </td>
+  </tr>
+  <tr>
+    <td>Figure 7</td>
   </tr>
 </table>
 
@@ -220,6 +263,10 @@ For all these cases, we tested with the remaining 800 original images.
     </td>
   </tr>
   <tr>
+    <td>Figure 8</td>
+    <td>Figure 9</td>
+  </tr>
+  <tr>
     <td>
       <img src="Results/heatmap_Sharpness.png" alt="3" width=300px height=250px>
     </td>
@@ -227,7 +274,26 @@ For all these cases, we tested with the remaining 800 original images.
       <img src="Results/heatmap_Rotation.png" alt="4" width=300px height=250px>
     </td>
   </tr>
+  <tr>
+    <td>Figure 10</td>
+    <td>Figure 11</td>
+  </tr>
 </table>
+
+
+## Conclusion
+
+This work investigated the impact of using processing images as a data augmentation approach for fine-tuning the ResNet-50.
+First, we successfully implemented the processing image techniques of noise insertion, rotation, contrast adjustment, and sharpness adjustment.
+Our experiments showed that all these techniques improved the precision of the COVID classification, although only the sharpness adjustment kept the recall of the training with only original images.
+Therefore, we conclude that our project was successful within the scope of the processing image course and as a preliminary research investigation.
+
+
+## Future Works
+
+A possible future work is to rerun the experiments with a bigger dataset to verify if the results are similar to ours.
+We could also run each experiment more than once to observe the impact of the random initialization of the neuron weights.
+Besides, we could apply the best-found processing image techniques to generate a single image and observe if they improve the model learning.
 
 
 ## What We Learned
@@ -244,6 +310,16 @@ Therefore, in our first experiment, we trained the ResNet-50 only with the 3.200
 Still, the executions presented significantly different results for the same set of images.
 Then we could conclude that the random parameters may influence a lot of the resulting model.
 However, this could have occurred due to the small dataset we used (a subset of the original one).
+
+
+## Tasks by Author
+
+- [Breno Maurício de Freitas Viana](https://github.com/brenov) (11920060)
+  - Implementation of noise insertion, rotation, and luminance techniques.
+  - Development of the script for automatizing the data augmentation.
+- [Felipe Antunes Quirino](https://github.com/felipeaq) (12448645)
+  - Implementation of contrast and sharpness adjustment techniques.
+  - Configuration and development of the CNN model with ResNet-50.
 
 
 ## References
