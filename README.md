@@ -92,8 +92,10 @@ As we said earlier, we selected 4.000 images (1.000 COVID and 3.000 NON-COVID im
 However, to keep in this repository ([Dataset](Dataset)), we selected only 28 images of those images.
 
 The results are present in the folder [Augmented](Augmented) and in [Python file](resnet-50.py).
-Fisrt, the folder [Augmented](Augmented) presents a total of 224 images all of them are augmented images generated from the [Dataset](Dataset).
+First, the folder [Augmented](Augmented) presents a total of 224 images.
+All of them are augmented images generated from the [Dataset](Dataset).
 The following images present some results of the data augmentation process.
+[demo-processing-images.ipynb](demo-processing-images.ipynb) is a Jupiter Notebook file demonstrating the use of the processing image techniques.
 
 <table>
   <tr>
