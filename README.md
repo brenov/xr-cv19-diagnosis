@@ -27,7 +27,7 @@ In this investigation, we are using the COVID-19 Chest X-ray Database from [Kagg
 (the dataset present in this repository ([Dataset](Dataset)) has 40 images, and it is just a small subset of the COVID-19 Chest X-ray Database).
 Furthermore, it was originally provided by Chowdhury et al. [1] and Rahman et al. [2].
 This dataset contains chest X-ray images of healthy people (10,192) and people diagnosed with COVID-19, viral pneumonia (1,345), and lung opacity, i.e., non-COVID-19 lung infection (6,012).
-All the images are gray-scale in PNG file format, and their resolution is 299x299 pixels.
+All the images are gray-scale in PNG file format (but some of them are represented with RGB channels), and their resolution is 299x299 pixels.
 The following images present examples of such cases:
 
 <table>
