@@ -71,7 +71,7 @@ These image processing methods are implemented in the [augmentation.py](augmenta
 The data augmentation is performed by the script [augmentate.py](augmentate.py).
 This script automatizes the data augmentation process by reading all the images from [Dataset](Dataset) and creating eight new versions of each original image, two for each processing image technique.
 We rotate the images in 15 degrees and -15 degrees; we opt for these values to simulate and (maybe) fix some badly positioned chest X-rays.
-We generated images with two intensities of noise (both means and standard deviations equal to 5 and 10), contrast adjustment (factor equal to 1.1 and 1.2), and sharpness adjustment (factors equal to 0.1 and 0.3, sigma values equal to 1.5 and 3, and k values equal to 7.5 and 11) for the remaining techniques.
+We generated images with two intensities of noise (both means and standard deviations equal to 5 and 10), contrast adjustment (factor equal to 1.1 and 1.2), and sharpness adjustment (intensity equal to 0.1 and 0.3, sigma values equal to 1.5 and 3, and k values equal to 7.5 and 11) for the remaining techniques.
 We avoid using too high values since, so far, we did not have expert advice.
 
 - **Noise Insertion**: consists basically in inserting random pixels in the input image.
@@ -152,8 +152,8 @@ The following images present some results of the data augmentation process.
     </td>
   </tr>
   <tr>
-    <td>Image with sharpness adjusted #1 (factor: 0.1, sigma: 1.5, k: 7.5)</td>
-    <td>Image with sharpness adjusted #2 (factor: 0.3, sigma: 3, k: 11)</td>
+    <td>Image with sharpness adjusted #1 (intensity: 0.1, sigma: 1.5, k: 7.5)</td>
+    <td>Image with sharpness adjusted #2 (intensity: 0.3, sigma: 3, k: 11)</td>
   </tr>
 </table>
 
