@@ -58,7 +58,7 @@ The following images present examples of such cases:
 </table>
 
 Since this is a preliminary stage of our research, we selected the first 1.000 images of each class from the database to perform our experiments.
-Therefore, we selected 4.000 images, where 3.000 of them are NON-COVID cases, and the remaining are COVID cases.
+Therefore, we selected 4.000 images, where 3.000 of them are non-COVID cases, and the remaining are COVID cases.
 
 
 ## Methodology
@@ -88,7 +88,7 @@ In the following section, we describe our experiments and their results.
 
 ## Results
 
-As we said earlier, we selected 4.000 images (1.000 COVID and 3.000 NON-COVID images) for training and testing the ResNet-50.
+As we said earlier, we selected 4.000 images (1.000 COVID and 3.000 non-COVID images) for training and testing the ResNet-50.
 However, to keep in this repository ([Dataset](Dataset)), we selected only 28 images of those images.
 
 The results are present in the folder [Augmented](Augmented) and in [Python file](resnet-50.py).
@@ -189,13 +189,13 @@ In terms of precision, all the experiments that used the images generated proces
 However, concerning the recall metric, most experiments were worse than the experiment with only original images.
 The single exception was the experiment with sharpness-adjusted images that tied with the experiment with only original images.
 
-We believe that the augmented images increased the dataset unbalance since there are more NON-COVID images than the COVID ones.
+We believe that the augmented images increased the dataset unbalance since there are more non-COVID images than the COVID ones.
 
 Figures 2, 3, 4, 5, and 6 show the probability distributions for each experiment.
-The values less than 0.5 are the images classified as NON-COVID cases, and the ones closer to 1 are the images classified as COVID cases.
-The blue label is for the COVID images, and the yellow label is for the NON-COVID images.
-As expected, some NON-COVID and COVID cases are misclassified.
-Figure 2 shows that some chest X-ray images have a degree of uncertainty regarding COVID or NON-COVID classification (in a range of 0.1 until 0.9).
+The values less than 0.5 are the images classified as non-COVID cases, and the ones closer to 1 are the images classified as COVID cases.
+The blue label is for the COVID images, and the yellow label is for the non-COVID images.
+As expected, some non-COVID and COVID cases are misclassified.
+Figure 2 shows that some chest X-ray images have a degree of uncertainty regarding COVID or non-COVID classification (in a range of 0.1 until 0.9).
 Also, there is a high degree of certainty predicted as false positives or false negatives.
 As shown in figures 3, 4, 5, and 6, the augmented data reduced the uncertainty of the images; however, it kept some miss predictions.
 
@@ -298,7 +298,7 @@ Besides, we could apply the best-found processing image techniques to generate a
 
 ## What We Learned
 
-The dataset presents some irregularities, such as children's lungs only of NON-COVID cases, and the X-ray images were collected from different X-ray machines.
+The dataset presents some irregularities, such as children's lungs only of non-COVID cases, and the X-ray images were collected from different X-ray machines.
 These irregularities may affect badly the training and, consequently, the quality resulting model.
 
 Deep Learning approaches are very computationally expensive, and we needed a powerful machine to perform our experiments.
