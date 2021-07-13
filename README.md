@@ -241,7 +241,7 @@ Figures 7, 8, 9, 10, and 11 show the confusion matrices for each experiment.
 In these figures, we can see the four classification cases: True Negatives (line 1 column 1), False positives (line 1 column 2), False negatives (line 2 column 1), True positives (line 2 column 2).
 These matrices show that all processing image techniques we applied to the chest X-ray images can decrease false negatives.
 Besides, except for the sharpness adjustment, the techniques can increase the number of false positives.
-up
+
 <table>
   <tr>
     <td>
